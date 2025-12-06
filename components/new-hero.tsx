@@ -4,8 +4,11 @@ import {
   ArrowRight,
   Download,
   Github,
+  Globe,
   Linkedin,
   Mail,
+  Phone,
+  Plus,
   Sparkles,
 } from "lucide-react";
 import { motion } from "motion/react";
@@ -21,7 +24,7 @@ export default function NewHero() {
   };
 
   return (
-    <section className="relative lg:max-h-[90vh] flex items-center justify-center py-20 overflow-hidden">
+    <section className="relative lg:max-h-[850px] flex items-center justify-center py-20 overflow-hidden">
       {/* Animated gradient background */}
       <div className="absolute inset-0 "></div>
 
@@ -62,7 +65,7 @@ export default function NewHero() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-amber-100 dark:bg-amber-950 border border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-200"
           >
-            <Sparkles size={16} className="animate-pulse" />
+            <Globe size={16} className="animate-pulse" />
             <span className="text-sm font-medium">
               Available for new opportunities
             </span>
