@@ -1,21 +1,48 @@
 "use client";
 
 import { Menu, Moon, Sun, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-interface NavigationProps {
-  isDark: boolean;
-  toggleTheme: () => void;
-}
 
-export default function Navigation({ isDark, toggleTheme }: NavigationProps) {
+export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
+  const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
+  useEffect(() => {
+    setMounted(true);
+    // Check localStorage and system preference
+    const stored = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    const shouldBeDark = stored ? stored === "dark" : prefersDark;
+    setIsDark(shouldBeDark);
+    updateTheme(shouldBeDark);
+  }, []);
+
+  const updateTheme = (dark: boolean) => {
+    if (dark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
+
+  const toggleTheme = () => {
+    const newIsDark = !isDark;
+    setIsDark(newIsDark);
+    updateTheme(newIsDark);
+    localStorage.setItem("theme", newIsDark ? "dark" : "light");
+  };
+
+  if (!mounted) return null;
   return (
-    <nav className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className="sticky top-12 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="text-xl font-bold bg-gradient-to-r from-amber-700 to-yellow-600 bg-clip-text text-transparent">
@@ -70,9 +97,8 @@ export default function Navigation({ isDark, toggleTheme }: NavigationProps) {
 
         {/* Bootstrap-style collapsible menu */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
-          }`}
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+            }`}
         >
           <div className="py-4 space-y-3 border-t border-border">
             <a

@@ -9,44 +9,13 @@ import Projects from "@/components/projects";
 import Skills from "@/components/skills";
 import Contact from "@/components/contact";
 import { Meteors } from "@/components/ui/meteors";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 export default function Home() {
-  const [isDark, setIsDark] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-    // Check localStorage and system preference
-    const stored = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-
-    const shouldBeDark = stored ? stored === "dark" : prefersDark;
-    setIsDark(shouldBeDark);
-    updateTheme(shouldBeDark);
-  }, []);
-
-  const updateTheme = (dark: boolean) => {
-    if (dark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  };
-
-  const toggleTheme = () => {
-    const newIsDark = !isDark;
-    setIsDark(newIsDark);
-    updateTheme(newIsDark);
-    localStorage.setItem("theme", newIsDark ? "dark" : "light");
-  };
-
-  if (!mounted) return null;
 
   return (
     <div className="min-h-screen bg-amber-50 dark:bg-background text-foreground transition-colors duration-200">
-      <Navigation isDark={isDark} toggleTheme={toggleTheme} />
 
       {/* Meteors - fixed position to cover entire viewport */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
@@ -55,10 +24,18 @@ export default function Home() {
 
       <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <NewHero />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Contact />
+        <ScrollReveal variant="fadeUp">
+          <Experience />
+        </ScrollReveal>
+        <ScrollReveal variant="fadeUp">
+          <Projects />
+        </ScrollReveal>
+        <ScrollReveal variant="fadeUp">
+          <Skills />
+        </ScrollReveal>
+        <ScrollReveal variant="fadeUp">
+          <Contact />
+        </ScrollReveal>
       </main>
 
       <footer className="mt-24 py-8 border-t border-border">

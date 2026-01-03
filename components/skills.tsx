@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatedList } from "./ui/animated-list";
+import { ScrollRevealList } from "./ui/scroll-reveal";
 import { BorderBeam } from "./ui/border-beam";
 import {
   Card,
@@ -72,7 +72,7 @@ export default function Skills() {
         A comprehensive range of technical and professional skills developed
         through 4+ years of experience.
       </p>
-      <AnimatedList className="mb-4">
+      <ScrollRevealList variant="fadeUp" staggerDelay={0.15} className="mb-4">
         <Card className="relative w-[100%] overflow-hidden">
           {/* <CardHeader>
             <CardTitle>Now Playing</CardTitle>
@@ -135,7 +135,7 @@ export default function Skills() {
             </div>
           </div>
         ))}
-      </AnimatedList>
+      </ScrollRevealList>
 
       {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-4">
         {skillCategories.map((category, index) => (

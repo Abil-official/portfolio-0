@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import React from "react";
 import { BentoCard, BentoGrid } from "./ui/bento-grid";
+import { ScrollReveal } from "./ui/scroll-reveal";
 
 const features = [
   // technologies: ["Laravel", "React", "MySQL", "AI Integration"],
@@ -92,11 +93,13 @@ export default function Projects() {
           showcasing diverse technical skills.
         </p>
 
-        <BentoGrid className="grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 lg:grid-rows-1 lg:max-h-[90vh] mb-4">
-          {features.map((feature) => (
-            <BentoCard key={feature.name} {...feature} />
-          ))}
-        </BentoGrid>
+        <ScrollReveal variant="fadeUp">
+          <BentoGrid className="grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 lg:grid-rows-1 lg:max-h-[90vh] mb-4">
+            {features.map((feature) => (
+              <BentoCard key={feature.name} {...feature} />
+            ))}
+          </BentoGrid>
+        </ScrollReveal>
 
         {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {features.map((project, index) => (

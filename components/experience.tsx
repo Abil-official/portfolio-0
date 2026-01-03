@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatedList } from "./ui/animated-list";
+import { ScrollRevealList } from "./ui/scroll-reveal";
 
 const experiences = [
   {
@@ -48,15 +48,14 @@ export default function Experience() {
         <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-amber-600 to-yellow-600 md:transform md:-translate-x-1/2"></div>
 
         <div className="space-y-12">
-          <AnimatedList className="mb-4">
+          <ScrollRevealList variant="fadeUp" staggerDelay={0.15} className="mb-4">
             {experiences.map((exp, index) => (
               <div
                 key={index}
                 className={`relative
-                  ${
-                    index % 2 === 0
-                      ? "md:mr-1/2 md:pr-12"
-                      : "md:ml-1/2 md:pl-12"
+                  ${index % 2 === 0
+                    ? "md:mr-1/2 md:pr-12"
+                    : "md:ml-1/2 md:pl-12"
                   }`}
               >
                 {/* Timeline dot */}
@@ -98,7 +97,7 @@ export default function Experience() {
                 </div>
               </div>
             ))}
-          </AnimatedList>
+          </ScrollRevealList>
         </div>
       </div>
     </section>
