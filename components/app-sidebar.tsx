@@ -7,6 +7,7 @@ import {
 
 import { NavMain } from "@/components/nav-main"
 import { TeamSwitcher } from "@/components/team-switcher"
+import { ToggleTheme } from "@/components/toggle-theme"
 import {
   Sidebar,
   SidebarContent,
@@ -66,6 +67,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
+        <ToggleTheme />
         {/* <NavUser user={data.user} /> */}
       </SidebarFooter>
       <SidebarRail />

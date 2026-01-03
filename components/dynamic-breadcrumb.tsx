@@ -46,14 +46,14 @@ export function DynamicBreadcrumb() {
         <Breadcrumb>
             <BreadcrumbList>
                 {/* Home link - always shown */}
-                <BreadcrumbItem className="hidden md:block">
+                {/* <BreadcrumbItem className="hidden md:block">
                     <BreadcrumbLink href="/">Home</BreadcrumbLink>
-                </BreadcrumbItem>
+                </BreadcrumbItem> */}
 
                 {/* Dynamic segments */}
                 {breadcrumbItems.map((item, index) => (
                     <React.Fragment key={item.href}>
-                        <BreadcrumbSeparator className="hidden md:block" />
+                        {/* <BreadcrumbSeparator className="hidden md:block" /> */}
                         <BreadcrumbItem>
                             {item.isLast ? (
                                 <BreadcrumbPage>{item.label}</BreadcrumbPage>
