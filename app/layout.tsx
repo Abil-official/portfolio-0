@@ -13,7 +13,7 @@ import { DynamicBreadcrumb } from "@/components/dynamic-breadcrumb";
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
-import JsonLd from "@/components/json-ld";
+
 
 export const metadata: Metadata = {
   title: {
@@ -32,12 +32,12 @@ export const metadata: Metadata = {
     "Software Engineer Portfolio",
     "Abil Rai",
   ],
-  authors: [{ name: "Abil Rai", url: "https://abilrai.com" }],
+  authors: [{ name: "Abil Rai", url: "https://abilrai.com.np" }],
   creator: "Abil Rai",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://abilrai.com",
+    url: "https://abilrai.com.np",
     title: "Abil Rai - Expert Laravel & React Developer",
     description:
       "Senior Full-stack Developer specializing in Laravel, React, and Next.js. Building scalable, high-performance web applications.",
@@ -128,7 +128,34 @@ export default function RootLayout({
           </SidebarProvider>
         </ThemeProvider>
         <Analytics />
-        <JsonLd />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Abil Rai",
+              url: "https://abilrai.com.np",
+              image: "https://abilrai.com.np/AR-logo.png",
+              sameAs: [
+                "https://github.com/Abil-official",
+                "https://linkedin.com/in/abil-rai",
+                "mailto:abilrai.official@gmail.com",
+              ],
+              jobTitle: "Laravel Developer",
+              description:
+                "Full-stack developer with expertise in Laravel, React, and building scalable web applications.",
+              knowsAbout: [
+                "Laravel",
+                "React",
+                "Next.js",
+                "PHP",
+                "Web Development",
+                "Software Architecture",
+              ],
+            }),
+          }}
+        />
       </body>
     </html>
   );
